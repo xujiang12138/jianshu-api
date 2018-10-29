@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.ButtonArticleMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.ButtonArticle">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="author_id" jdbcType="INTEGER" property="authorId" />
+    <result column="comments" jdbcType="INTEGER" property="comments" />
+    <result column="likes" jdbcType="INTEGER" property="likes" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="summary" jdbcType="VARCHAR" property="summary" />
+    <result column="thumbnail" jdbcType="VARCHAR" property="thumbnail" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="Button_id" jdbcType="INTEGER" property="buttonId" />
+  </resultMap>
+</mapper>
