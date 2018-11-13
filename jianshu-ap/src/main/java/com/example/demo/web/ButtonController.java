@@ -2,13 +2,12 @@ package com.example.demo.web;
 import com.example.demo.core.Result;
 import com.example.demo.core.ResultGenerator;
 import com.example.demo.model.Button;
+import com.example.demo.model.vo.ButtonArticleVo;
+import com.example.demo.model.vo.FanVo;
 import com.example.demo.service.ButtonService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -40,8 +39,8 @@ public class ButtonController {
         return ResultGenerator.genSuccessResult();
     }
 
-    @PostMapping("/detail")
-    public Result detail(@RequestParam Integer id) {
+    @PostMapping("/detail/{id}")
+    public Result detail(@PathVariable Integer id) {
         Button button = buttonService.findById(id);
         return ResultGenerator.genSuccessResult(button);
     }
@@ -50,6 +49,22 @@ public class ButtonController {
     public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
         PageHelper.startPage(page, size);
         List<Button> list = buttonService.findAll();
+        PageInfo pageInfo = new PageInfo(list);
+        return ResultGenerator.genSuccessResult(pageInfo);
+    }
+
+    @PostMapping("/fan/{id}")
+    public Result fan(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size,@PathVariable Integer id) {
+        PageHelper.startPage(page, size);
+        List<FanVo> list = buttonService.getFan(id);
+        PageInfo pageInfo = new PageInfo(list);
+        return ResultGenerator.genSuccessResult(pageInfo);
+    }
+
+    @PostMapping("/btnArticle/{id}")
+    public Result btnArticle(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size,@PathVariable Integer id) {
+        PageHelper.startPage(page, size);
+        List<ButtonArticleVo> list = buttonService.getButtonArticle(id);
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);
     }

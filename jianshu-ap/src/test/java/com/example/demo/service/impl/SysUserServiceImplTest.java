@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import com.example.demo.core.Result;
 import com.example.demo.model.SysUser;
 import com.example.demo.model.dto.SysUserDTO;
+import com.example.demo.model.vo.AllUserVO;
 import com.example.demo.service.SysUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -24,5 +27,12 @@ public class SysUserServiceImplTest  {
     @Test
     public void userLogin() throws Exception {
 ;    }
+
+    @Test
+    public  void getAllUser() throws Exception{
+        List<AllUserVO> sysUserList =  sysUserService.getAllUser();
+        System.out.println(sysUserList);
+
+    }
 
 }
